@@ -1,0 +1,21 @@
+<configuration>
+	<appender name="FILE_LOG" class="ch.qos.logback.core.FileAppender">
+		<file>log/demo.log</file>
+		<encoder>
+			<pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n</pattern>
+		</encoder>
+	</appender>
+ 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender> 
+	<!-- les messages de niveau error sur cette couche sont redirigés vers l'appender FILE_LOG -->
+	<logger name="fr.eni.jse.demo" level="error">
+		<appender-ref ref="FILE_LOG"/>
+	</logger>
+ 	<!-- les messages de niveau debut et > sont redirigés vers l'appender STDOUT -->
+	<root level="debug">
+		<appender-ref ref="STDOUT"/>
+	</root>
+ </configuration>
