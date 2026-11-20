@@ -13,8 +13,16 @@ public class SavingAccount extends AccountBank{
 	public void displayDetails()
 	{
 		super.displayDetails();
-		System.out.println("Tax interest rate is:"+this.taxInterest);
-		System.out.println("dateHeureDernierOperation is:"+this.dateHeureDernierOperation.toString());
+		System.out.println("\tType of Account : Saving Account");
+		System.out.println("\t\tInterest Rate : "+this.taxInterest);
+		System.out.println("\t\tDate of last operation : "+this.dateHeureDernierOperation.toString());
+	}
+	public void crediter(double balance)
+	{
+		double totalamount=balance+ super.getBalance();
+		setBalance(totalamount);
+		System.out.println("OPERATION : Credit account savings of "+balance+" euros");
+		this.dateHeureDernierOperation=LocalDateTime.now();
 	}
 	
 

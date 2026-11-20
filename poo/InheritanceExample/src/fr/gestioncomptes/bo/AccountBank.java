@@ -12,8 +12,26 @@ public class AccountBank {
 	}
 	public void displayDetails()
 	{
-		System.out.println("Account holder is:"+this.holderTitle+ " having balance of:"+this.balance);
-		System.out.println("Account no is:"+this.accno);
+
+		System.out.println("AccountBank  ("+accno+"- Holder"+this.holderTitle +") balance ="+ this.balance+")");
+	}
+	public String getHolderTitle() {
+		return holderTitle;
+	}
+	public void setHolderTitle(String holderTitle) {
+		this.holderTitle = holderTitle;
+	}
+	public double getBalance() {
+		return balance;
+	}
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+	public String getAccno() {
+		return accno;
+	}
+	public void setAccno(String accno) {
+		this.accno = accno;
 	}
 	
 }

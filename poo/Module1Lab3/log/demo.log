@@ -1,0 +1,5 @@
+2026-11-20 12:06:43,816 ERROR [main] f.e.j.demo [TestLog.java:25] Problem with class do not exist:Class do not exist.
+2026-11-20 12:07:26,408 ERROR [main] f.e.j.demo [TestLog.java:25] Problem occured :Class do not exist.
+2026-11-20 12:15:38,050 DEBUG [main] f.e.j.demo [TestLog.java:17] Testing myFunction
+2026-11-20 12:15:38,057 WARN [main] f.e.j.demo [TestLog.java:18] There is some problem with this class
+2026-11-20 12:15:38,059 ERROR [main] f.e.j.demo [TestLog.java:25] Problem occured :Class do not exist.
