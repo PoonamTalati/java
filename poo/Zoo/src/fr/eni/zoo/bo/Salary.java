@@ -6,6 +6,12 @@ public abstract class Salary {
 		private String firstname;
 		private double salary;
 		private Addresse address;
+		
+		
+		public Salary() {
+			super();
+		
+		}
 		public Salary(int id, String surname, String firstname, double salary, Addresse address) {
 			
 			this.id = id;

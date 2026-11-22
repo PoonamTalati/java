@@ -5,6 +5,11 @@ public class Animal {
 	private String name;
 	private boolean isFemale;
 	private TypeAnimal typeanimal;
+	
+	public Animal() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Animal(int id, String name, boolean isFemale, TypeAnimal typeanimal) {
 		super();
 		this.id = id;
