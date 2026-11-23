@@ -18,7 +18,7 @@ public class TestAnimalBll {
 		zoo.add(new Animal(0, "Gerald", false, TypeAnimal.GIRAFE));
 		zoo.add(new Animal(0, "dumbo", true, TypeAnimal.ELEPHANT));
 
-		AnimalManager animalManager = new AnimalManager();
+		AnimalManager animalManager = AnimalManager.getInstance();
 
 		System.out.println("------------ Insertion des 4 animaux ------------");
 		for (Animal animal : zoo) {

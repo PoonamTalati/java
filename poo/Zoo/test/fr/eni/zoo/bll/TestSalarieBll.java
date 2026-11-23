@@ -18,7 +18,7 @@ public class TestSalarieBll {
 		List<Animal> zoo = new ArrayList<>();
 		zoo.add(new Animal(0, "Simba", false, TypeAnimal.LION));
 		zoo.add(new Animal(0, "Coco", true, TypeAnimal.SINGE));
-		AnimalManager animalManager = new AnimalManager();
+		AnimalManager animalManager = AnimalManager.getInstance();
 		for (Animal animal : zoo) {
 			animalManager.ajouterAnimal(animal);
 		}
@@ -38,7 +38,7 @@ public class TestSalarieBll {
 		salaries.add(new Guardian(0, "Dubois", "Sophie", 1600, a3, true));
 		salaries.add(new Guardian(0, "Leclerc", "Jacques", 1700, a4, false));
 
-		SalarieManager salarieManager = new SalarieManager();
+		SalarieManager salarieManager =SalarieManager.getInstance();
 		System.out.println("------------ Insertion des salariés ------------");
 		for (Salary salarie : salaries) {
 			salarieManager.ajouterSalarie(salarie);

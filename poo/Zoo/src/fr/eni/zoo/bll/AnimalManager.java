@@ -7,6 +7,20 @@ import fr.eni.zoo.dal.AnimalDaoMock;
 
 public class AnimalManager {
 	AnimalDaoMock animalDao = new AnimalDaoMock();
+	
+	private static AnimalManager instance=null;
+
+	
+	private AnimalManager() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public static AnimalManager getInstance() {
+		if(instance==null) {
+			instance=new AnimalManager();
+		}
+		return instance;
+	}
 	public void ajouterAnimal(Animal animal) throws BLLException {
 		if (animal == null) {
 			throw new BLLException("Animal is null");

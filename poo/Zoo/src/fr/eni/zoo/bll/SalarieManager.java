@@ -8,7 +8,19 @@ import fr.eni.zoo.dal.SalarieDaoMock;
 
 public class SalarieManager {
 	SalarieDaoMock salarieDao = new SalarieDaoMock();
+	private static SalarieManager instance=null;
 	
+	
+	private SalarieManager() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public static SalarieManager getInstance() {
+		if (instance==null) {
+			instance=new SalarieManager();
+		}
+		return instance;
+	}
 	public void ajouterSalarie(Salary salarie) throws BLLException {
 		if (salarie == null) {
 			throw new BLLException("Salarie is null");
