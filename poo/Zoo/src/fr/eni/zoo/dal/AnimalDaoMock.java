@@ -5,19 +5,20 @@ import java.util.List;
 
 import fr.eni.zoo.bo.Animal;
 
-public class AnimalDaoMock {
+public class AnimalDaoMock implements AnimalDao {
 	private List<Animal> animaux = new ArrayList<>();
 	private static int id = 1;
 	
 	public static int changeId() {
 		return id++;
 	}
-	public void insert(Animal animal) {
+	public int insert(Animal animal) {
 		if (animal == null) {
-	        return; // or throw DALException if preferred
+	        return 0; // or throw DALException if preferred
 	    }
 	    animal.setId(changeId());
 	    animaux.add(animal);
+	    return animal.getId();
 	}
 	public List<Animal> findall() {
 		return animaux;
@@ -37,8 +38,7 @@ public class AnimalDaoMock {
 		
 	}
 	public Animal findById(int id) throws DALException {
-		try
-		{
+		
 			for (Animal animal : animaux) {
 				if (animal.getId() == id) {
 					//System.out.println(animal);
@@ -46,10 +46,6 @@ public class AnimalDaoMock {
 				}
 			}
 			throw new DALException("L'animal d'id : "+id+" - n'existe pas");
-		}
-		catch (Exception e) {
-			throw new DALException("L'animal d'id : "+id+" - n'existe pas");
-		}
 		
 		
 	}
@@ -58,7 +54,7 @@ public class AnimalDaoMock {
 		for (int i = 0; i < animaux.size(); i++) {
 			if (animaux.get(i).getId() == animal.getId()) {
 				animaux.set(i, animal);
-				break;
+				return; // Exit the method after updating
 			}
 		}
 		throw new DALException("This animal "+animal.toString()+"does not exist, no possible update");

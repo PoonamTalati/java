@@ -3,12 +3,18 @@ package fr.eni.zoo.bll;
 import java.util.List;
 
 import fr.eni.zoo.bo.Animal;
+import fr.eni.zoo.dal.AnimalDao;
 import fr.eni.zoo.dal.AnimalDaoMock;
+import fr.eni.zoo.dal.DALException;
+import fr.eni.zoo.dal.DaoFactory;
 
 public class AnimalManager {
-	AnimalDaoMock animalDao = new AnimalDaoMock();
+	
+	private AnimalDao animalDao = DaoFactory.getAnimalDao(); 
+	//AnimalDaoMock animalDao = new AnimalDaoMock();
 	
 	private static AnimalManager instance=null;
+	
 
 	
 	private AnimalManager() {
@@ -21,7 +27,7 @@ public class AnimalManager {
 		}
 		return instance;
 	}
-	public void ajouterAnimal(Animal animal) throws BLLException {
+	public int ajouterAnimal(Animal animal) throws BLLException {
 		if (animal == null) {
 			throw new BLLException("Animal is null");
 		}
@@ -31,7 +37,13 @@ public class AnimalManager {
 		if (animal.getTypeanimal() == null) {
 			throw new BLLException("Animal type is null");
 		}
-		animalDao.insert(animal);
+		try {
+			animalDao.insert(animal);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return animal.getId();
 	}
 	public void supprimerAnimal(Animal animal) throws BLLException {
 		try {
@@ -55,16 +67,30 @@ public class AnimalManager {
 		}
 	}
 	public List<Animal> rechercherTousAnimaux() {
-		return animalDao.findall();
+		try {
+			return animalDao.findall();
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 		
 }
 	public double getProportionaFemelle() {
-		int total = animalDao.findall().size();
+		int total=0;
 		int femelleCount = 0;
-		for (Animal animal : animalDao.findall()) {
-			if (animal.isFemale()) {
-				femelleCount++;
-			}
+		try {
+			total = animalDao.findall().size();
+			
+			for (Animal animal : animalDao.findall()) {
+				if (animal.isFemale()) {
+					femelleCount++;
+				}
+		} }catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		
+		
 		}
 		double proportion = (double) femelleCount / total * 100;
 		return proportion;
