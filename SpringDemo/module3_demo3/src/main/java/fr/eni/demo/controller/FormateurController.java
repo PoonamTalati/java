@@ -4,6 +4,7 @@ package fr.eni.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import fr.eni.demo.bll.FormateurService;
@@ -16,15 +17,22 @@ public class FormateurController{
 
 	private FormateurService formateurService;
     public void afficherFormateurs() {
+    	
         List<Formateur> lstFormateurs = formateurService.getFormateurs();
         for(Formateur f:lstFormateurs)
         	System.out.println(f);   
     }
-	@Autowired
-	public void setFormateurService(FormateurService formateurService) {
-		System.out.println("Calling setFormateurService Method");
+    
+  
+	public FormateurController(
+			//@Qualifier("formateurServiceImpl")
+			FormateurService formateurService) {
+		
 		this.formateurService = formateurService;
 	}
+
+	  
+	
 	
     
 }
